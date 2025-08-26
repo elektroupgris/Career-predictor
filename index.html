@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Career Path Predictor - Teknik Elektro</title>
+    <title>AI Career Path Predictor - Teknik Elektro UPGRI'S</title>
     <style>
         :root {
             --primary: #2c3e50;
@@ -11,6 +11,8 @@
             --accent: #3498db;
             --light: #ecf0f1;
             --dark: #2c3e50;
+            --upgris-blue: #0066aa;
+            --upgris-yellow: #f9a01b;
         }
         
         * {
@@ -29,6 +31,52 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .university-info {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            height: 70px;
+            width: auto;
+        }
+        
+        .university-text {
+            text-align: center;
+        }
+        
+        .university-text h1 {
+            color: var(--upgris-blue);
+            font-size: 18px;
+            margin: 0;
+        }
+        
+        .university-text p {
+            color: var(--dark);
+            font-size: 14px;
+            margin: 5px 0 0;
+            font-weight: 500;
         }
         
         .container {
@@ -61,7 +109,7 @@
         }
         
         .btn {
-            background: var(--accent);
+            background: var(--upgris-blue);
             color: white;
             border: none;
             padding: 12px 25px;
@@ -75,7 +123,8 @@
         }
         
         .btn:hover {
-            background: var(--primary);
+            background: var(--upgris-yellow);
+            color: var(--dark);
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
@@ -94,9 +143,9 @@
         }
         
         .option-btn:hover {
-            background: var(--accent);
+            background: var(--upgris-blue);
             color: white;
-            border-color: var(--accent);
+            border-color: var(--upgris-blue);
         }
         
         .progress-bar {
@@ -109,7 +158,7 @@
         
         .progress {
             height: 100%;
-            background: var(--accent);
+            background: var(--upgris-blue);
             border-radius: 5px;
             width: 0%;
             transition: width 0.5s ease;
@@ -122,10 +171,11 @@
             margin: 20px 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             text-align: center;
+            border-left: 5px solid var(--upgris-yellow);
         }
         
         .career-title {
-            color: var(--secondary);
+            color: var(--upgris-blue);
             font-size: 24px;
             margin: 10px 0;
         }
@@ -133,6 +183,7 @@
         .career-description {
             font-style: italic;
             margin: 15px 0;
+            color: #555;
         }
         
         .share-buttons {
@@ -142,9 +193,38 @@
             margin: 20px 0;
         }
         
-        .logo {
-            max-width: 180px;
-            margin-bottom: 20px;
+        .program-info {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+            border-left: 4px solid var(--upgris-blue);
+        }
+        
+        .program-info h3 {
+            color: var(--upgris-blue);
+            margin-bottom: 10px;
+        }
+        
+        .program-info ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        .program-info li {
+            margin-bottom: 8px;
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #ccc;
+        }
+        
+        .contact-info p {
+            margin: 5px 0;
+            font-size: 14px;
         }
         
         .hidden {
@@ -165,15 +245,57 @@
                 padding: 10px 20px;
                 font-size: 14px;
             }
+            
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .university-text h1 {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <div class="university-info">
+            <div class="logo-container">
+                <!-- Logo UPGRI'S (Ganti dengan URL logo asli jika ada) -->
+                <div style="width: 70px; height: 70px; background: var(--upgris-blue); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold;">UPGRI'S</div>
+                <div class="university-text">
+                    <h1>UNIVERSITAS PGRI SEMARANG</h1>
+                    <p>PROGRAM STUDI TEKNIK ELEKTRO</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container" id="intro-screen">
         <h1>AI Career Path Predictor</h1>
         <p>Temukan jalur karir masa depan Anda di bidang Teknik Elektro!</p>
         <p>Jawab beberapa pertanyaan singkat dan biarkan AI kami menganalisis potensi terbaik Anda.</p>
+        
+        <div class="program-info">
+            <h3>Prodi Teknik Elektro UPGRI'S</h3>
+            <p>Program Studi Teknik Elektro Universitas PGRI Semarang menyelenggarakan pendidikan profesional di bidang teknik elektro dengan konsentrasi:</p>
+            <ul>
+                <li>Teknik Tenaga Listrik</li>
+                <li>Teknik Elektronika</li>
+                <li>Teknik Telekomunikasi</li>
+                <li>Teknik Kendali</li>
+            </ul>
+            <p>Visi kami menjadi program studi unggulan dalam bidang teknik elektro yang berdaya saing global dan berkarakter pancasila.</p>
+        </div>
+        
         <button class="btn" id="start-btn">Mulai Sekarang</button>
+        
+        <div class="contact-info">
+            <p><strong>Informasi PMB:</strong></p>
+            <p>Gedung Fakultas Teknik, Jl. Sidodadi Timur No. 24 Semarang</p>
+            <p>Telepon: (024) 8316377 | Email: teknik.elektro@upgris.ac.id</p>
+            <p>Website: www.upgris.ac.id/teknikelektro</p>
+        </div>
     </div>
 
     <div class="container hidden" id="quiz-screen">
@@ -189,7 +311,18 @@
         <div class="result-card">
             <h2 class="career-title" id="career-title">Robotics Engineer</h2>
             <p class="career-description" id="career-description">Anda memiliki potensi besar di bidang robotika! Dengan ketertarikan pada teknologi masa depan, Anda cocok untuk mengembangkan sistem robotik yang revolusioner.</p>
-            <p><strong>Rekomendasi Jurusan:</strong> Teknik Elektro - Konsentrasi Robotika dan Otomasi</p>
+            <p><strong>Rekomendasi Jurusan:</strong> Teknik Elektro UPGRI'S - Konsentrasi Robotika dan Otomasi</p>
+        </div>
+        
+        <div class="program-info">
+            <h3>Prodi Teknik Elektro UPGRI'S</h3>
+            <p>Dengan bergabung di Prodi Teknik Elektro UPGRI'S, Anda akan mendapatkan:</p>
+            <ul>
+                <li>Dosen berpengalaman dan profesional di bidangnya</li>
+                <li>Laboratorium lengkap dengan peralatan terkini</li>
+                <li>Kerjasama dengan industri dan peluang magang</li>
+                <li>Program kewirausahaan dan pengembangan karir</li>
+            </ul>
         </div>
         
         <p>Bagikan hasil ini kepada teman-teman Anda!</p>
@@ -200,6 +333,12 @@
         </div>
         
         <button class="btn" id="restart-btn">Coba Lagi</button>
+        
+        <div class="contact-info">
+            <p><strong>Informasi Pendaftaran:</strong></p>
+            <p>PMB Universitas PGRI Semarang</p>
+            <p>Website: pmb.upgris.ac.id | Hotline: 0812-3456-7890</p>
+        </div>
     </div>
 
     <script>
@@ -256,23 +395,23 @@
         const careerPaths = {
             robotics: {
                 title: "Robotics Engineer",
-                description: "Anda memiliki potensi besar di bidang robotika! Dengan ketertarikan pada teknologi masa depan, Anda cocok untuk mengembangkan sistem robotik yang revolusioner di perusahaan seperti SpaceX atau Boston Dynamics.",
-                recommendation: "Teknik Elektro - Konsentrasi Robotika dan Otomasi"
+                description: "Anda memiliki potensi besar di bidang robotika! Dengan ketertarikan pada teknologi masa depan, Anda cocok untuk mengembangkan sistem robotik yang revolusioner. Prodi Teknik Elektro UPGRI'S dengan konsentrasi Teknik Kendali dan Robotika akan menjadi pilihan tepat untuk Anda.",
+                recommendation: "Teknik Elektro UPGRI'S - Konsentrasi Robotika dan Otomasi"
             },
             energy: {
                 title: "Energy Systems Specialist",
-                description: "Minat Anda pada energi terbarukan menunjukkan potensi menjadi ahli sistem energi masa depan. Anda dapat berkontribusi pada transisi energi hijau dan membangun infrastruktur energi berkelanjutan.",
-                recommendation: "Teknik Elektro - Konsentrasi Sistem Energi"
+                description: "Minat Anda pada energi terbarukan menunjukkan potensi menjadi ahli sistem energi masa depan. Anda dapat berkontribusi pada transisi energi hijau dan membangun infrastruktur energi berkelanjutan. Prodi Teknik Elektro UPGRI'S dengan fokus pada Teknik Tenaga Listrik akan mendukung karir Anda.",
+                recommendation: "Teknik Elektro UPGRI'S - Konsentrasi Sistem Energi"
             },
             ai: {
                 title: "AI Electronics Engineer",
-                description: "Kombinasi ketertarikan pada AI dan elektronik membuka peluang karir di pengembangan hardware untuk AI dan machine learning, seperti chip khusus dan sistem embedded intelligence.",
-                recommendation: "Teknik Elektro - Konsentrasi Elektronika dan Kecerdasan Buatan"
+                description: "Kombinasi ketertarikan pada AI dan elektronik membuka peluang karir di pengembangan hardware untuk AI dan machine learning, seperti chip khusus dan sistem embedded intelligence. Prodi Teknik Elektro UPGRI'S dengan konsentrasi Elektronika akan menjadi fondasi yang kuat untuk karir Anda.",
+                recommendation: "Teknik Elektro UPGRI'S - Konsentrasi Elektronika dan Kecerdasan Buatan"
             },
             telecom: {
                 title: "Telecommunications Network Architect",
-                description: "Anda memiliki bakat dalam bidang komunikasi dan jaringan. Potensi Anda cocok untuk merancang infrastruktur telekomunikasi masa depan seperti jaringan 5G/6G dan Internet of Things.",
-                recommendation: "Teknik Elektro - Konsentrasi Telekomunikasi"
+                description: "Anda memiliki bakat dalam bidang komunikasi dan jaringan. Potensi Anda cocok untuk merancang infrastruktur telekomunikasi masa depan seperti jaringan 5G/6G dan Internet of Things. Prodi Teknik Elektro UPGRI'S dengan konsentrasi Telekomunikasi akan membekali Anda dengan pengetahuan yang diperlukan.",
+                recommendation: "Teknik Elektro UPGRI'S - Konsentrasi Telekomunikasi"
             }
         };
 
@@ -379,7 +518,7 @@
         // Fungsi berbagi hasil
         function shareResult(platform) {
             const careerTitle = document.getElementById('career-title').textContent;
-            const text = `Saya baru saja mencoba AI Career Path Predictor dan hasilnya saya cocok sebagai ${careerTitle} di Teknik Elektro! Coba tesnya di sini:`;
+            const text = `Saya baru saja mencoba AI Career Path Predictor dari Prodi Teknik Elektro UPGRI'S dan hasilnya saya cocok sebagai ${careerTitle}! Coba tesnya di sini:`;
             const url = window.location.href;
             
             let shareUrl;
