@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elektro AI Creator - UPGRI'S</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --upgris-blue: #0066aa;
+            --upgris-yellow: #f9a01b;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .university-info {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            height: 70px;
+            width: auto;
+        }
+        
+        .university-text {
+            text-align: center;
+        }
+        
+        .university-text h1 {
+            color: var(--upgris-blue);
+            font-size: 18px;
+            margin: 0;
+        }
+        
+        .university-text p {
+            color: var(--dark);
+            font-size: 14px;
+            margin: 5px 0 0;
+            font-weight: 500;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 800px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        h2 {
+            color: var(--upgris-blue);
+            margin: 15px 0;
+            font-size: 22px;
+        }
+        
+        h3 {
+            color: var(--upgris-blue);
+            margin: 15px 0;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            background: var(--upgris-blue);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            background: var(--upgris-yellow);
+            color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+        
+        .workspace {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            border: 2px dashed var(--upgris-blue);
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #f8f9fa;
+        }
+        
+        #circuit-canvas {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .components-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .component-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            cursor: grab;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        
+        .component-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            border-color: var(--upgris-blue);
+        }
+        
+        .component-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .simulation-result {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .led {
+            width: 30px;
+            height: 30px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 auto;
+            transition: background-color 0.3s ease;
+        }
+        
+        .led.on {
+            background-color: #ff4757;
+            box-shadow: 0 0 15px #ff4757;
+        }
+        
+        .program-info {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+            border-left: 4px solid var(--upgris-blue);
+        }
+        
+        .program-info h3 {
+            color: var(--upgris-blue);
+            margin-bottom: 10px;
+        }
+        
+        .program-info ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        .program-info li {
+            margin-bottom: 8px;
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #ccc;
+        }
+        
+        .contact-info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .ai-thinking {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            font-style: italic;
+            color: var(--upgris-blue);
+        }
+        
+        .dot-flashing {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: var(--upgris-blue);
+            color: var(--upgris-blue);
+            animation: dotFlashing 1s infinite linear alternate;
+            animation-delay: 0.5s;
+        }
+        
+        .dot-flashing::before, .dot-flashing::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: var(--upgris-blue);
+            color: var(--upgris-blue);
+        }
+        
+        .dot-flashing::before {
+            left: -15px;
+            animation: dotFlashing 1s infinite alternate;
+            animation-delay: 0s;
+        }
+        
+        .dot-flashing::after {
+            left: 15px;
+            animation: dotFlashing 1s infinite alternate;
+            animation-delay: 1s;
+        }
+        
+        @keyframes dotFlashing {
+            0% {
+                background-color: var(--upgris-blue);
+            }
+            50%,
+            100% {
+                background-color: #ebe6ff;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .university-text h1 {
+                font-size: 16px;
+            }
+            
+            .components-panel {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="university-info">
+            <div class="logo-container">
+                <!-- Logo UPGRI'S -->
+                <div style="width: 70px; height: 70px; background: var(--upgris-blue); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold;">UPGRI'S</div>
+                <div class="university-text">
+                    <h1>UNIVERSITAS PGRI SEMARANG</h1>
+                    <p>PROGRAM STUDI TEKNIK ELEKTRO</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Elektro AI Creator</h1>
+        <p>Rancang sirkuit elektronika virtual Anda dan biarkan AI menganalisis serta mensimulasikannya!</p>
+        
+        <div class="program-info">
+            <h3>Prodi Teknik Elektro UPGRI'S</h3>
+            <p>Program Studi Teknik Elektro Universitas PGRI Semarang menyelenggarakan pendidikan profesional di bidang teknik elektro dengan konsentrasi:</p>
+            <ul>
+                <li>Teknik Tenaga Listrik</li>
+                <li>Teknik Elektronika</li>
+                <li>Teknik Telekomunikasi</li>
+                <li>Teknik Kendali dan Robotika</li>
+            </ul>
+        </div>
+        
+        <div class="workspace">
+            <h2>Panel Komponen</h2>
+            <p>Drag and drop komponen ke area canvas untuk membuat sirkuit</p>
+            
+            <div class="components-panel">
+                <div class="component-item" draggable="true" data-component="battery">
+                    <div class="component-icon">🔋</div>
+                    <div>Baterai</div>
+                </div>
+                <div class="component-item" draggable="true" data-component="resistor">
+                    <div class="component-icon">📏</div>
+                    <div>Resistor</div>
+                </div>
+                <div class="component-item" draggable="true" data-component="led">
+                    <div class="component-icon">💡</div>
+                    <div>LED</div>
+                </div>
+                <div class="component-item" draggable="true" data-component="capacitor">
+                    <div class="component-icon">📦</div>
+                    <div>Kapasitor</div>
+                </div>
+                <div class="component-item" draggable="true" data-component="transistor">
+                    <div class="component-icon">🔺</div>
+                    <div>Transistor</div>
+                </div>
+                <div class="component-item" draggable="true" data-component="switch">
+                    <div class="component-icon">🔘</div>
+                    <div>Saklar</div>
+                </div>
+            </div>
+            
+            <h2>Canvas Sirkuit</h2>
+            <div class="canvas-container" id="canvas-container">
+                <canvas id="circuit-canvas"></canvas>
+            </div>
+            
+            <div>
+                <button class="btn" id="simulate-btn">Simulasi dengan AI</button>
+                <button class="btn" id="clear-btn">Bersihkan Canvas</button>
+            </div>
+        </div>
+        
+        <div class="simulation-result hidden" id="simulation-result">
+            <h2>Hasil Simulasi AI</h2>
+            <div class="ai-thinking">
+                <span>AI sedang menganalisis sirkuit Anda</span>
+                <div class="dot-flashing"></div>
+            </div>
+            <div id="simulation-output">
+                <!-- Hasil simulasi akan dimasukkan di sini oleh JavaScript -->
+            </div>
+        </div>
+        
+        <div class="program-info">
+            <h3>Mengapa Memilih Teknik Elektro UPGRI'S?</h3>
+            <ul>
+                <li>Kurikulum berbasis industri 4.0 dengan fokus IoT dan AI</li>
+                <li>Laboratorium lengkap dengan peralatan terkini</li>
+                <li>Dosen berpengalaman dan profesional di bidangnya</li>
+                <li>Kerjasama dengan industri dan peluang magang</li>
+                <li>Prospek karir yang luas di berbagai sektor industri</li>
+            </ul>
+        </div>
+        
+        <div class="contact-info">
+            <p><strong>Informasi PMB Teknik Elektro UPGRI'S:</strong></p>
+            <p>Gedung Fakultas Teknik, Jl. Sidodadi Timur No. 24 Semarang</p>
+            <p>Telepon: (024) 8316377 | Email: teknik.elektro@upgris.ac.id</p>
+            <p>Website: www.upgris.ac.id/teknikelektro</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('circuit-canvas');
+            const ctx = canvas.getContext('2d');
+            const simulateBtn = document.getElementById('simulate-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const simulationResult = document.getElementById('simulation-result');
+            const simulationOutput = document.getElementById('simulation-output');
+            
+            // Set canvas size
+            function resizeCanvas() {
+                const container = document.getElementById('canvas-container');
+                canvas.width = container.clientWidth;
+                canvas.height = container.clientHeight;
+                drawGrid();
+            }
+            
+            // Draw grid on canvas
+            function drawGrid() {
+                const gridSize = 20;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.beginPath();
+                for (let x = 0; x <= canvas.width; x += gridSize) {
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x, canvas.height);
+                }
+                
+                for (let y = 0; y <= canvas.height; y += gridSize) {
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(canvas.width, y);
+                }
+                
+                ctx.strokeStyle = '#e0e0e0';
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+            }
+            
+            // Initialize canvas
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            
+            // Component drag and drop
+            let draggedComponent = null;
+            
+            document.querySelectorAll('.component-item').forEach(component => {
+                component.addEventListener('dragstart', function(e) {
+                    draggedComponent = this.getAttribute('data-component');
+                    e.dataTransfer.setData('text/plain', draggedComponent);
+                });
+            });
+            
+            canvas.addEventListener('dragover', function(e) {
+                e.preventDefault();
+            });
+            
+            canvas.addEventListener('drop', function(e) {
+                e.preventDefault();
+                const componentType = e.dataTransfer.getData('text/plain');
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                drawComponent(componentType, x, y);
+            });
+            
+            // Draw components on canvas
+            function drawComponent(type, x, y) {
+                ctx.font = '14px Arial';
+                ctx.textAlign = 'center';
+                
+                switch(type) {
+                    case 'battery':
+                        ctx.fillText('🔋', x, y);
+                        ctx.fillText('Baterai 9V', x, y + 20);
+                        break;
+                    case 'resistor':
+                        ctx.fillText('📏', x, y);
+                        ctx.fillText('Resistor 1kΩ', x, y + 20);
+                        break;
+                    case 'led':
+                        ctx.fillText('💡', x, y);
+                        ctx.fillText('LED', x, y + 20);
+                        break;
+                    case 'capacitor':
+                        ctx.fillText('📦', x, y);
+                        ctx.fillText('Kapasitor 10μF', x, y + 20);
+                        break;
+                    case 'transistor':
+                        ctx.fillText('🔺', x, y);
+                        ctx.fillText('Transistor', x, y + 20);
+                        break;
+                    case 'switch':
+                        ctx.fillText('🔘', x, y);
+                        ctx.fillText('Saklar', x, y + 20);
+                        break;
+                }
+            }
+            
+            // Clear canvas
+            clearBtn.addEventListener('click', function() {
+                drawGrid();
+                simulationResult.classList.add('hidden');
+            });
+            
+            // Simulate circuit
+            simulateBtn.addEventListener('click', function() {
+                simulationResult.classList.remove('hidden');
+                simulationOutput.innerHTML = `
+                    <div class="ai-thinking">
+                        <span>AI sedang menganalisis sirkuit Anda</span>
+                        <div class="dot-flashing"></div>
+                    </div>
+                `;
+                
+                // Simulate AI thinking with random delay
+                setTimeout(() => {
+                    const results = [
+                        {
+                            title: "Sirkuit LED Sederhana",
+                            description: "AI mendeteksi Anda membuat sirkuit LED sederhana dengan baterai dan resistor. Sirkuit ini bekerja dengan baik!",
+                            explanation: "Resistor membatasi arus yang mengalir ke LED, mencegahnya rusak. Arus yang mengalir sekitar 15mA dengan tegangan 2.1V pada LED.",
+                            career: "Di Teknik Elektro UPGRI'S, Anda akan mempelajari cara mendesain sirkuit seperti ini dan yang lebih kompleks lagi."
+                        },
+                        {
+                            title: "Rangkaian Pembagi Tegangan",
+                            description: "AI mengenali rangkaian pembagi tegangan yang Anda buat. Rangkaian ini berguna untuk mendapatkan tegangan tertentu dari sumber tegangan yang lebih tinggi.",
+                            explanation: "Dengan resistor 1kΩ, rangkaian ini menghasilkan tegangan output sebesar 4.5V dari sumber 9V.",
+                            career: "Di Teknik Elektro UPGRI'S, Anda akan mempelajari aplikasi praktis dari rangkaian seperti ini dalam sistem elektronika."
+                        },
+                        {
+                            title: "Penguat Sinyal dengan Transistor",
+                            description: "AI melihat Anda mencoba membuat penguat sinyal menggunakan transistor. Desain Anda menunjukkan pemahaman dasar yang baik!",
+                            explanation: "Transistor bertindak sebagai penguat arus, menguatkan sinyal input kecil menjadi output yang lebih besar. Penguatan sekitar 100 kali.",
+                            career: "Di Teknik Elektro UPGRI'S, Anda akan mendalami desain amplifier dan aplikasinya dalam sistem audio dan komunikasi."
+                        }
+                    ];
+                    
+                    const randomResult = results[Math.floor(Math.random() * results.length)];
+                    
+                    simulationOutput.innerHTML = `
+                        <h3>${randomResult.title}</h3>
+                        <p>${randomResult.description}</p>
+                        <div class="program-info">
+                            <h4>Penjelasan Teknis:</h4>
+                            <p>${randomResult.explanation}</p>
+                        </div>
+                        <div class="program-info">
+                            <h4>Hubungannya dengan Teknik Elektro:</h4>
+                            <p>${randomResult.career}</p>
+                        </div>
+                        <div class="led on"></div>
+                        <p>Simulasi menunjukkan sirkuit Anda bekerja dengan baik!</p>
+                    `;
+                }, 2000);
+            });
+            
+            // Initial grid drawing
+            drawGrid();
+        });
+    </script>
+</body>
+</html>
