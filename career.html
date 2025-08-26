@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Path Predictor - Teknik Elektro</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        h2 {
+            color: var(--secondary);
+            margin: 15px 0;
+            font-size: 22px;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .option-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            margin: 8px 0;
+            padding: 12px 20px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            color: var(--dark);
+            transition: all 0.2s ease;
+        }
+        
+        .option-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .result-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .career-title {
+            color: var(--secondary);
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        
+        .career-description {
+            font-style: italic;
+            margin: 15px 0;
+        }
+        
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .logo {
+            max-width: 180px;
+            margin-bottom: 20px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="intro-screen">
+        <h1>AI Career Path Predictor</h1>
+        <p>Temukan jalur karir masa depan Anda di bidang Teknik Elektro!</p>
+        <p>Jawab beberapa pertanyaan singkat dan biarkan AI kami menganalisis potensi terbaik Anda.</p>
+        <button class="btn" id="start-btn">Mulai Sekarang</button>
+    </div>
+
+    <div class="container hidden" id="quiz-screen">
+        <h2 id="question-text">Pertanyaan akan muncul di sini</h2>
+        <div class="progress-bar">
+            <div class="progress" id="progress-bar"></div>
+        </div>
+        <div id="options-container"></div>
+    </div>
+
+    <div class="container hidden" id="result-screen">
+        <h1>Hasil Prediksi Karir Anda</h1>
+        <div class="result-card">
+            <h2 class="career-title" id="career-title">Robotics Engineer</h2>
+            <p class="career-description" id="career-description">Anda memiliki potensi besar di bidang robotika! Dengan ketertarikan pada teknologi masa depan, Anda cocok untuk mengembangkan sistem robotik yang revolusioner.</p>
+            <p><strong>Rekomendasi Jurusan:</strong> Teknik Elektro - Konsentrasi Robotika dan Otomasi</p>
+        </div>
+        
+        <p>Bagikan hasil ini kepada teman-teman Anda!</p>
+        <div class="share-buttons">
+            <button class="btn" onclick="shareResult('facebook')">Facebook</button>
+            <button class="btn" onclick="shareResult('twitter')">Twitter</button>
+            <button class="btn" onclick="shareResult('whatsapp')">WhatsApp</button>
+        </div>
+        
+        <button class="btn" id="restart-btn">Coba Lagi</button>
+    </div>
+
+    <script>
+        // Data pertanyaan dan opsi
+        const questions = [
+            {
+                question: "Aktivitas apa yang paling Anda nikmati?",
+                options: [
+                    { text: "Merakit dan memperbaiki perangkat elektronik", value: "robotics" },
+                    { text: "Bereksperimen dengan sumber energi alternatif", value: "energy" },
+                    { text: "Membuat program dan bekerja dengan algoritma", value: "ai" },
+                    { text: "Mendesain sistem komunikasi dan jaringan", value: "telecom" }
+                ]
+            },
+            {
+                question: "Mata pelajaran apa yang paling Anda minati?",
+                options: [
+                    { text: "Fisika - terutama kelistrikan dan magnetisme", value: "energy" },
+                    { text: "Matematika - pemecahan masalah yang kompleks", value: "ai" },
+                    { text: "Komputer - pemrograman dan jaringan", value: "telecom" },
+                    { text: "Praktikum - hands-on dengan peralatan", value: "robotics" }
+                ]
+            },
+            {
+                question: "Karir impian Anda paling mendekati?",
+                options: [
+                    { text: "Mengembangkan sistem robotika untuk eksplorasi luar angkasa", value: "robotics" },
+                    { text: "Merancang pembangkit listrik tenaga surya yang efisien", value: "energy" },
+                    { text: "Menciptakan AI yang dapat memprediksi kebutuhan energi", value: "ai" },
+                    { text: "Membangun infrastruktur jaringan 6G", value: "telecom" }
+                ]
+            },
+            {
+                question: "Project seperti apa yang ingin Anda kerjakan?",
+                options: [
+                    { text: "Membuat drone otonom untuk monitoring lingkungan", value: "robotics" },
+                    { text: "Mendesain sistem smart grid untuk kota pintar", value: "energy" },
+                    { text: "Mengembangkan algoritma machine learning untuk diagnosis medis", value: "ai" },
+                    { text: "Membangun jaringan IoT untuk pertanian presisi", value: "telecom" }
+                ]
+            },
+            {
+                question: "Skill apa yang paling ingin Anda kuasai?",
+                options: [
+                    { text: "Embedded systems programming", value: "robotics" },
+                    { text: "Power systems analysis", value: "energy" },
+                    { text: "Deep learning dan neural networks", value: "ai" },
+                    { text: "Wireless communication protocols", value: "telecom" }
+                ]
+            }
+        ];
+
+        // Data karir berdasarkan tipe
+        const careerPaths = {
+            robotics: {
+                title: "Robotics Engineer",
+                description: "Anda memiliki potensi besar di bidang robotika! Dengan ketertarikan pada teknologi masa depan, Anda cocok untuk mengembangkan sistem robotik yang revolusioner di perusahaan seperti SpaceX atau Boston Dynamics.",
+                recommendation: "Teknik Elektro - Konsentrasi Robotika dan Otomasi"
+            },
+            energy: {
+                title: "Energy Systems Specialist",
+                description: "Minat Anda pada energi terbarukan menunjukkan potensi menjadi ahli sistem energi masa depan. Anda dapat berkontribusi pada transisi energi hijau dan membangun infrastruktur energi berkelanjutan.",
+                recommendation: "Teknik Elektro - Konsentrasi Sistem Energi"
+            },
+            ai: {
+                title: "AI Electronics Engineer",
+                description: "Kombinasi ketertarikan pada AI dan elektronik membuka peluang karir di pengembangan hardware untuk AI dan machine learning, seperti chip khusus dan sistem embedded intelligence.",
+                recommendation: "Teknik Elektro - Konsentrasi Elektronika dan Kecerdasan Buatan"
+            },
+            telecom: {
+                title: "Telecommunications Network Architect",
+                description: "Anda memiliki bakat dalam bidang komunikasi dan jaringan. Potensi Anda cocok untuk merancang infrastruktur telekomunikasi masa depan seperti jaringan 5G/6G dan Internet of Things.",
+                recommendation: "Teknik Elektro - Konsentrasi Telekomunikasi"
+            }
+        };
+
+        // Variabel state kuis
+        let currentQuestion = 0;
+        let userAnswers = [];
+        const quizScreen = document.getElementById('quiz-screen');
+        const introScreen = document.getElementById('intro-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const progressBar = document.getElementById('progress-bar');
+        
+        // Inisialisasi event listeners
+        document.getElementById('start-btn').addEventListener('click', startQuiz);
+        document.getElementById('restart-btn').addEventListener('click', restartQuiz);
+        
+        // Fungsi memulai kuis
+        function startQuiz() {
+            introScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            showQuestion();
+        }
+        
+        // Fungsi menampilkan pertanyaan
+        function showQuestion() {
+            // Update progress bar
+            const progressPercentage = (currentQuestion / questions.length) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            
+            // Tampilkan pertanyaan
+            questionText.textContent = questions[currentQuestion].question;
+            
+            // Kosongkan opsi sebelumnya
+            optionsContainer.innerHTML = '';
+            
+            // Tambahkan opsi jawaban
+            questions[currentQuestion].options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option.text;
+                button.classList.add('option-btn');
+                button.addEventListener('click', () => selectOption(option.value));
+                optionsContainer.appendChild(button);
+            });
+        }
+        
+        // Fungsi memilih opsi
+        function selectOption(value) {
+            userAnswers.push(value);
+            
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+        
+        // Fungsi menampilkan hasil
+        function showResult() {
+            // Hitung hasil berdasarkan jawaban
+            const result = calculateResult();
+            
+            // Tampilkan hasil
+            document.getElementById('career-title').textContent = careerPaths[result].title;
+            document.getElementById('career-description').textContent = careerPaths[result].description;
+            document.querySelector('#result-screen .result-card p strong').nextSibling.textContent = careerPaths[result].recommendation;
+            
+            // Tampilkan layar hasil
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+        }
+        
+        // Fungsi menghitung hasil
+        function calculateResult() {
+            // Hitung frekuensi setiap jawaban
+            const counts = {};
+            userAnswers.forEach(answer => {
+                counts[answer] = (counts[answer] || 0) + 1;
+            });
+            
+            // Temukan jawaban dengan frekuensi tertinggi
+            let maxCount = 0;
+            let result = '';
+            
+            for (const [key, value] of Object.entries(counts)) {
+                if (value > maxCount) {
+                    maxCount = value;
+                    result = key;
+                }
+            }
+            
+            return result;
+        }
+        
+        // Fungsi restart kuis
+        function restartQuiz() {
+            currentQuestion = 0;
+            userAnswers = [];
+            resultScreen.classList.add('hidden');
+            introScreen.classList.remove('hidden');
+        }
+        
+        // Fungsi berbagi hasil
+        function shareResult(platform) {
+            const careerTitle = document.getElementById('career-title').textContent;
+            const text = `Saya baru saja mencoba AI Career Path Predictor dan hasilnya saya cocok sebagai ${careerTitle} di Teknik Elektro! Coba tesnya di sini:`;
+            const url = window.location.href;
+            
+            let shareUrl;
+            
+            switch(platform) {
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+                    break;
+                case 'whatsapp':
+                    shareUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+                    break;
+                default:
+                    return;
+            }
+            
+            window.open(shareUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
