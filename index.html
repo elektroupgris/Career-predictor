@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Career Path Predictor - Teknik Elektro UPGRIS</title>
+    <title>Teknik Elektro UPGRIS - Temukan Jalur Karirmu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #e74c3c;
-            --accent: #3498db;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --upgris-blue: #0066aa;
-            --upgris-yellow: #f9a01b;
+            --primary: #0066cc;
+            --secondary: #ff6600;
+            --accent: #00cc99;
+            --dark: #1a1a40;
+            --light: #f8f9fa;
         }
         
         * {
@@ -23,534 +22,902 @@
         }
         
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: var(--light);
-            min-height: 100vh;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-            width: 100%;
-            max-width: 600px;
-        }
-        
-        .university-info {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .logo {
-            height: 70px;
-            width: auto;
-        }
-        
-        .university-text {
-            text-align: center;
-        }
-        
-        .university-text h1 {
-            color: var(--upgris-blue);
-            font-size: 18px;
-            margin: 0;
-        }
-        
-        .university-text p {
-            color: var(--dark);
-            font-size: 14px;
-            margin: 5px 0 0;
-            font-weight: 500;
+            background-color: #f5f7fb;
+            color: #333;
+            line-height: 1.6;
         }
         
         .container {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--dark);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             width: 90%;
-            max-width: 600px;
-            padding: 30px;
-            margin: 20px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
             text-align: center;
         }
         
-        h1 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 28px;
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
-        h2 {
-            color: var(--secondary);
-            margin: 15px 0;
-            font-size: 22px;
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
         }
         
-        p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        
-        .btn {
-            background: var(--upgris-blue);
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
             color: white;
-            border: none;
-            padding: 12px 25px;
+            padding: 12px 30px;
             border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
+            border: none;
             cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            margin: 10px 5px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
-        .btn:hover {
-            background: var(--upgris-yellow);
-            color: var(--dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        .cta-button:hover {
+            background-color: #ff8533;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
         }
         
-        .option-btn {
-            display: block;
-            width: 100%;
-            text-align: left;
-            margin: 8px 0;
-            padding: 12px 20px;
+        .secondary-button {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .secondary-button:hover {
+            background-color: rgba(255, 102, 0, 0.1);
+        }
+        
+        /* Career Prediction Section */
+        .career-prediction {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-size: 2.2rem;
+        }
+        
+        .prediction-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .prediction-steps {
+            flex: 1;
+            min-width: 300px;
             background: #f8f9fa;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            color: var(--dark);
-            transition: all 0.2s ease;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
-        .option-btn:hover {
-            background: var(--upgris-blue);
+        .step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .step.active {
+            display: block;
+        }
+        
+        .step-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .option {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .option.selected {
+            border-color: var(--secondary);
+            background-color: rgba(255, 102, 0, 0.1);
+        }
+        
+        .option i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .prediction-result {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
             color: white;
-            border-color: var(--upgris-blue);
+            padding: 2rem;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-placeholder {
+            text-align: center;
+            opacity: 0.8;
+        }
+        
+        .career-path {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .career-path h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .career-detail {
+            margin-bottom: 1rem;
+        }
+        
+        .career-detail h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .upgris-recommendation {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+        
+        /* Program Advantages */
+        .advantages {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .advantage-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .advantage-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .advantage-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .advantage-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background-color: #e9ecef;
+            border-radius: 50px;
+            margin: 1.5rem 0;
         }
         
         .progress-bar {
             height: 10px;
-            background: #e0e0e0;
-            border-radius: 5px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
-        
-        .progress {
-            height: 100%;
-            background: var(--upgris-blue);
-            border-radius: 5px;
-            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 50px;
+            width: 20%;
             transition: width 0.5s ease;
         }
         
-        .result-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            border-left: 5px solid var(--upgris-yellow);
-        }
-        
-        .career-title {
-            color: var(--upgris-blue);
-            font-size: 24px;
-            margin: 10px 0;
-        }
-        
-        .career-description {
-            font-style: italic;
-            margin: 15px 0;
-            color: #555;
-        }
-        
-        .share-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-        }
-        
-        .program-info {
-            background: var(--light);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: left;
-            border-left: 4px solid var(--upgris-blue);
-        }
-        
-        .program-info h3 {
-            color: var(--upgris-blue);
-            margin-bottom: 10px;
-        }
-        
-        .program-info ul {
-            padding-left: 20px;
-            margin: 10px 0;
-        }
-        
-        .program-info li {
-            margin-bottom: 8px;
-        }
-        
-        .contact-info {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px dashed #ccc;
-        }
-        
-        .contact-info p {
-            margin: 5px 0;
-            font-size: 14px;
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                width: 95%;
-                padding: 20px;
-            }
-            
-            h1 {
-                font-size: 24px;
-            }
-            
-            .btn {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-            
-            .logo-container {
+            .header-content {
                 flex-direction: column;
-                text-align: center;
+                gap: 1rem;
             }
             
-            .university-text h1 {
-                font-size: 16px;
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .options-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+            
+            .logo-text {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="university-info">
-            <div class="logo-container">
-                <!-- Logo UPGRIS (Ganti dengan URL logo asli jika ada) -->
-                <div style="width: 70px; height: 70px; background: var(--upgris-blue); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold;">
-                    <img src = "https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://teknikelektro.upgris.ac.id/wp-content/uploads/2025/01/1-1.png" alt = "UPGRIS">
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800/https://teknikelektro.upgris.ac.id/wp-content/uploads/2025/01/1-1.png" alt="Logo Teknik Elektro UPGRIS">
+                <div class="logo-text">Teknik Elektro UPGRIS</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#prediction">Prediksi Karir</a></li>
+                    <li><a href="#advantages">Keunggulan</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Temukan Jalur Karir Teknik Elektro yang Tepat untuk Anda</h1>
+            <p>Program Studi Teknik Elektro UPGRIS mempersiapkan Anda menjadi ahli di bidang otomasi industri dan teknologi masa depan.</p>
+            <a href="#prediction" class="cta-button">Coba Prediksi Karir</a>
+        </div>
+    </section>
+
+    <!-- Career Prediction Section -->
+    <section id="prediction" class="career-prediction">
+        <div class="container">
+            <h2 class="section-title">Prediksi Karir Teknik Elektro</h2>
+            <div class="prediction-container">
+                <div class="prediction-steps">
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                    
+                    <!-- Step 1: Minat dan Hobi -->
+                    <div class="step active" id="step-1">
+                        <h3 class="step-title">Apa minat dan hobi Anda?</h3>
+                        <div class="options-grid">
+                            <div class="option" data-value="robot">
+                                <i class="fas fa-robot"></i>
+                                <p>Robotika</p>
+                            </div>
+                            <div class="option" data-value="coding">
+                                <i class="fas fa-code"></i>
+                                <p>Pemrograman</p>
+                            </div>
+                            <div class="option" data-value="electronics">
+                                <i class="fas fa-microchip"></i>
+                                <p>Elektronik</p>
+                            </div>
+                            <div class="option" data-value="renewable">
+                                <i class="fas fa-solar-panel"></i>
+                                <p>Energi Terbarukan</p>
+                            </div>
+                            <div class="option" data-value="design">
+                                <i class="fas fa-pencil-ruler"></i>
+                                <p>Desain</p>
+                            </div>
+                            <div class="option" data-value="gaming">
+                                <i class="fas fa-gamepad"></i>
+                                <p>Gaming</p>
+                            </div>
+                            <div class="option" data-value="iot">
+                                <i class="fas fa-wifi"></i>
+                                <p>Internet of Things</p>
+                            </div>
+                            <div class="option" data-value="diy">
+                                <i class="fas fa-tools"></i>
+                                <p>DIY Projects</p>
+                            </div>
+                        </div>
+                        <div class="navigation-buttons">
+                            <button class="cta-button secondary-button" id="reset-button">Reset</button>
+                            <button class="cta-button" id="next-1">Lanjut</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Mata Pelajaran -->
+                    <div class="step" id="step-2">
+                        <h3 class="step-title">Mata pelajaran apa yang paling Anda sukai?</h3>
+                        <div class="options-grid">
+                            <div class="option" data-value="math">
+                                <i class="fas fa-square-root-alt"></i>
+                                <p>Matematika</p>
+                            </div>
+                            <div class="option" data-value="physics">
+                                <i class="fas fa-atom"></i>
+                                <p>Fisika</p>
+                            </div>
+                            <div class="option" data-value="programming">
+                                <i class="fas fa-laptop-code"></i>
+                                <p>Pemrograman</p>
+                            </div>
+                            <div class="option" data-value="electronics">
+                                <i class="fas fa-bolt"></i>
+                                <p>Elektronika</p>
+                            </div>
+                            <div class="option" data-value="design">
+                                <i class="fas fa-drafting-compass"></i>
+                                <p>Desain Teknik</p>
+                            </div>
+                            <div class="option" data-value="logic">
+                                <i class="fas fa-brain"></i>
+                                <p>Logika</p>
+                            </div>
+                        </div>
+                        <div class="navigation-buttons">
+                            <button class="cta-button secondary-button" id="back-2">Kembali</button>
+                            <button class="cta-button" id="next-2">Lanjut</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Project yang Pernah Dikerjakan -->
+                    <div class="step" id="step-3">
+                        <h3 class="step-title">Project apa yang pernah Anda kerjakan?</h3>
+                        <div class="options-grid">
+                            <div class="option" data-value="robot-project">
+                                <i class="fas fa-robot"></i>
+                                <p>Robot Sederhana</p>
+                            </div>
+                            <div class="option" data-value="app-project">
+                                <i class="fas fa-mobile-alt"></i>
+                                <p>Aplikasi Mobile</p>
+                            </div>
+                            <div class="option" data-value="electronic-project">
+                                <i class="fas fa-microchip"></i>
+                                <p>Rangkaian Elektronik</p>
+                            </div>
+                            <div class="option" data-value="iot-project">
+                                <i class="fas fa-wifi"></i>
+                                <p>IoT Device</p>
+                            </div>
+                            <div class="option" data-value="game-project">
+                                <i class="fas fa-gamepad"></i>
+                                <p>Game Sederhana</p>
+                            </div>
+                            <div class="option" data-value="no-project">
+                                <i class="fas fa-times-circle"></i>
+                                <p>Belum Ada</p>
+                            </div>
+                        </div>
+                        <div class="navigation-buttons">
+                            <button class="cta-button secondary-button" id="back-3">Kembali</button>
+                            <button class="cta-button" id="next-3">Lanjut</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4: Skill yang Diminati -->
+                    <div class="step" id="step-4">
+                        <h3 class="step-title">Skill apa yang ingin Anda kuasai?</h3>
+                        <div class="options-grid">
+                            <div class="option" data-value="programming-skill">
+                                <i class="fas fa-code"></i>
+                                <p>Pemrograman</p>
+                            </div>
+                            <div class="option" data-value="circuit-design">
+                                <i class="fas fa-project-diagram"></i>
+                                <p>Desain Sirkuit</p>
+                            </div>
+                            <div class="option" data-value="automation">
+                                <i class="fas fa-cogs"></i>
+                                <p>Sistem Otomasi</p>
+                            </div>
+                            <div class="option" data-value="robotics">
+                                <i class="fas fa-robot"></i>
+                                <p>Robotika</p>
+                            </div>
+                            <div class="option" data-value="energy">
+                                <i class="fas fa-charging-station"></i>
+                                <p>Sistem Energi</p>
+                            </div>
+                            <div class="option" data-value="ai">
+                                <i class="fas fa-brain"></i>
+                                <p>Kecerdasan Buatan</p>
+                            </div>
+                        </div>
+                        <div class="navigation-buttons">
+                            <button class="cta-button secondary-button" id="back-4">Kembali</button>
+                            <button class="cta-button" id="next-4">Lanjut</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 5: Jenis Pekerjaan Impian -->
+                    <div class="step" id="step-5">
+                        <h3 class="step-title">Seperti apa pekerjaan impian Anda?</h3>
+                        <div class="options-grid">
+                            <div class="option" data-value="research">
+                                <i class="fas fa-flask"></i>
+                                <p>Penelitian & Development</p>
+                            </div>
+                            <div class="option" data-value="fieldwork">
+                                <i class="fas fa-hard-hat"></i>
+                                <p>Pekerjaan Lapangan</p>
+                            </div>
+                            <div class="option" data-value="design-work">
+                                <i class="fas fa-drafting-compass"></i>
+                                <p>Desain & Perencanaan</p>
+                            </div>
+                            <div class="option" data-value="programming-work">
+                                <i class="fas fa-laptop-code"></i>
+                                <p>Pemrograman & Software</p>
+                            </div>
+                            <div class="option" data-value="management">
+                                <i class="fas fa-chart-line"></i>
+                                <p>Manajemen Proyek</p>
+                            </div>
+                            <div class="option" data-value="entrepreneur">
+                                <i class="fas fa-briefcase"></i>
+                                <p>Wirausaha/Startup</p>
+                            </div>
+                        </div>
+                        <div class="navigation-buttons">
+                            <button class="cta-button secondary-button" id="back-5">Kembali</button>
+                            <button class="cta-button" id="calculate-result">Lihat Hasil</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="university-text">
-                    <h1>UNIVERSITAS PGRI SEMARANG</h1>
-                    <p>PROGRAM STUDI TEKNIK ELEKTRO</p>
+                
+                <div class="prediction-result">
+                    <div class="result-placeholder">
+                        <i class="fas fa-search fa-3x"></i>
+                        <p>Isi semua langkah untuk melihat prediksi karir yang sesuai dengan minat dan bakat Anda</p>
+                    </div>
+                    <div class="career-path" id="career-result">
+                        <!-- Hasil akan diisi oleh JavaScript -->
+                    </div>
                 </div>
             </div>
         </div>
-        <div style="text-align: center; margin: 15px 0;">
-    <a href="lomba.html" class="btn" style="background: var(--upgris-yellow); color: var(--dark);">
-        🚀 Coba Elektro AI Creator!
-    </a>
-</div>
+    </section>
 
+    <!-- Program Advantages -->
+    <section id="advantages" class="advantages">
+        <div class="container">
+            <h2 class="section-title">Keunggulan Teknik Elektro UPGRIS</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <i class="fas fa-industry"></i>
+                    <h3>Fokus Otomasi Industri</h3>
+                    <p>Kurikulum dirancang khusus untuk memenuhi kebutuhan industri 4.0 dengan fokus pada sistem otomasi dan robotika.</p>
+                </div>
+                <div class="advantage-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>Laboratorium Modern</h3>
+                    <p>Fasilitas lab terkini dengan peralatan mutakhir untuk mendukung proses belajar dan penelitian.</p>
+                </div>
+                <div class="advantage-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Dosen Berpengalaman</h3>
+                    <p>Dosen-dosen profesional dengan pengalaman industri yang siap membimbing Anda menjadi ahli di bidangnya.</p>
+                </div>
+                <div class="advantage-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Kerjasama Industri</h3>
+                    <p>Jaringan kerjasama dengan berbagai perusahaan ternama untuk magang dan penyerapan lulusan.</p>
+                </div>
+                <div class="advantage-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Prospek Karir Luas</h3>
+                    <p>Lulusan Teknik Elektro memiliki peluang kerja di berbagai sektor industri dengan remunerasi yang kompetitif.</p>
+                </div>
+                <div class="advantage-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Sertifikasi Profesi</h3>
+                    <p>Program sertifikasi kompetensi untuk meningkatkan nilai lulusan di dunia kerja.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-        
-    </div>
-
-    <div class="container" id="intro-screen">
-        <h1>AI Career Path Predictor</h1>
-        <p>Temukan jalur karir masa depan Anda di bidang Teknik Elektro!</p>
-        <p>Jawab beberapa pertanyaan singkat dan biarkan AI kami menganalisis potensi terbaik Anda.</p>
-        
-        <div class="program-info">
-            <h3>Prodi Teknik Elektro UPGRIS</h3>
-            <p>Program Studi Teknik Elektro Universitas PGRI Semarang menyelenggarakan pendidikan profesional di bidang teknik elektro dengan konsentrasi:</p>
-            <ul>
-                <li>Teknik Tenaga Listrik / Energi Terbarukan</li>
-                <li>Otomasi Industri</li>
-                <li>Teknik Komputasi dan  Telekomunikasi</li>
-                
-            </ul>
-            <p>Visi kami menjadi program studi unggulan dalam bidang teknik elektro yang unggul dan berjati diri di bidang otomoasi industri</p>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Teknik Elektro UPGRIS</h3>
+                    <p>Program Studi Teknik Elektro Universitas PGRI Semarang</p>
+                    <p>Visi: Menjadi program studi yang unggul dan berjatidiri dalam bidang otomasi industri.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-globe"></i> Website: <a href="https://teknikelektro.upgris.ac.id" style="color: white;">teknikelektro.upgris.ac.id</a></p>
+                    <p><i class="fab fa-instagram"></i> Instagram: <a href="https://instagram.com/elektroupgris" style="color: white;">@elektroupgris</a></p>
+                    <p><i class="fas fa-envelope"></i> Email: elektro@upgris.ac.id</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Pendaftaran</h3>
+                    <p>Segera daftarkan diri Anda untuk menjadi bagian dari Teknik Elektro UPGRIS melalui website PMB UPGRIS.</p>
+                    <a href="https://pmb.upgris.ac.id" class="cta-button" style="margin-top: 10px;">Daftar Sekarang</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Teknik Elektro UPGRIS. All Rights Reserved.</p>
+            </div>
         </div>
-        
-        <button class="btn" id="start-btn">Mulai Sekarang</button>
-        
-        <div class="contact-info">
-            <p><strong>Informasi PMB:</strong></p>
-            <p>Gedung Fakultas Teknik, Jl. Sidodadi Timur No. 24 Semarang</p>
-            <p>Telepon: (024) 8316377 | Email: elektro@upgris.ac.id</p>
-            <p>Website: <a href="https://teknikelektro.upgris.ac.id/">teknikelektro.upgris.ac.id</a> </p>
-            <p>Info PMB : <a href="https://pmb.upgris.ac.id/">pmb.upgris.ac.id</a> </p>
-        </div>
-    </div>
-
-    <div class="container hidden" id="quiz-screen">
-        <h2 id="question-text">Pertanyaan akan muncul di sini</h2>
-        <div class="progress-bar">
-            <div class="progress" id="progress-bar"></div>
-        </div>
-        <div id="options-container"></div>
-    </div>
-
-    <div class="container hidden" id="result-screen">
-        <h1>Hasil Prediksi Karir Anda</h1>
-        <div class="result-card">
-            <h2 class="career-title" id="career-title">Robotics Engineer</h2>
-            <p class="career-description" id="career-description">Anda memiliki potensi besar di bidang robotika! Dengan ketertarikan pada teknologi masa depan, Anda cocok untuk mengembangkan sistem robotik yang revolusioner.</p>
-            <p><strong>Rekomendasi Jurusan:</strong> Teknik Elektro UPGRIS - Konsentrasi Robotika dan Otomasi</p>
-        </div>
-        
-        <div class="program-info">
-            <h3>Prodi Teknik Elektro UPGRIS</h3>
-            <p>Dengan bergabung di Prodi Teknik Elektro UPGRIS, Anda akan mendapatkan:</p>
-            <ul>
-                <li>Dosen berpengalaman dan profesional di bidangnya</li>
-                <li>Laboratorium lengkap dengan peralatan terkini</li>
-                <li>Kerjasama dengan industri dan peluang magang</li>
-                <li>Program kewirausahaan dan pengembangan karir</li>
-            </ul>
-        </div>
-        
-        <p>Bagikan hasil ini kepada teman-teman Anda!</p>
-        <div class="share-buttons">
-            <button class="btn" onclick="shareResult('facebook')">Facebook</button>
-            <button class="btn" onclick="shareResult('twitter')">Twitter</button>
-            <button class="btn" onclick="shareResult('whatsapp')">WhatsApp</button>
-        </div>
-        
-        <button class="btn" id="restart-btn">Coba Lagi</button>
-        
-        <div class="contact-info">
-            <p><strong>Informasi Pendaftaran:</strong></p>
-            <p>PMB Universitas PGRI Semarang</p>
-            <p>Website: pmb.upgris.ac.id | Hotline: 0812-3456-7890</p>
-        </div>
-    </div>
+    </footer>
 
     <script>
-        // Data pertanyaan dan opsi
-        const questions = [
-            {
-                question: "Aktivitas apa yang paling Anda nikmati?",
-                options: [
-                    { text: "Merakit dan memperbaiki perangkat elektronik", value: "robotics" },
-                    { text: "Bereksperimen dengan sumber energi alternatif", value: "energy" },
-                    { text: "Membuat program dan bekerja dengan algoritma", value: "ai" },
-                    { text: "Mendesain sistem komunikasi dan jaringan", value: "telecom" }
-                ]
+        // Data untuk sistem prediksi karir
+        const careerData = {
+            "control-engineer": {
+                title: "Insinyur Sistem Kendali",
+                description: "Anda akan merancang dan mengimplementasikan sistem kendali untuk berbagai aplikasi industri, dari robotika hingga proses manufaktur.",
+                skills: "Pemrograman C++, Sistem Kendali, Robotika, Instrumentasi",
+                salary: "Rp 8-15 juta/bulan untuk fresh graduate",
+                reason: "Teknik Elektro UPGRIS memiliki fokus kuat pada otomasi industri dengan laboratorium lengkap untuk praktik sistem kendali."
             },
-            {
-                question: "Mata pelajaran apa yang paling Anda minati?",
-                options: [
-                    { text: "Fisika - terutama kelistrikan dan magnetisme", value: "energy" },
-                    { text: "Matematika - pemecahan masalah yang kompleks", value: "ai" },
-                    { text: "Komputer - pemrograman dan jaringan", value: "telecom" },
-                    { text: "Praktikum - hands-on dengan peralatan", value: "robotics" }
-                ]
+            "embedded-engineer": {
+                title: "Insinyur Sistem Embedded",
+                description: "Anda akan mengembangkan sistem komputer khusus yang tertanam dalam perangkat seperti smartphone, kendaraan, atau peralatan medis.",
+                skills: "Pemrograman Embedded C/C++, Arduino, Raspberry Pi, Elektronika Digital",
+                salary: "Rp 7-12 juta/bulan untuk fresh graduate",
+                reason: "Program studi kami menawarkan mata kuliah khusus sistem embedded dan mikrokontroler dengan project-based learning."
             },
-            {
-                question: "Karir impian Anda paling mendekati?",
-                options: [
-                    { text: "Mengembangkan sistem robotika untuk eksplorasi luar angkasa", value: "robotics" },
-                    { text: "Merancang pembangkit listrik tenaga surya yang efisien", value: "energy" },
-                    { text: "Menciptakan AI yang dapat memprediksi kebutuhan energi", value: "ai" },
-                    { text: "Membangun infrastruktur jaringan 6G", value: "telecom" }
-                ]
+            "power-engineer": {
+                title: "Insinyur Sistem Tenaga",
+                description: "Anda akan bekerja dalam perencanaan, operasi, dan pemeliharaan sistem pembangkit, transmisi, dan distribusi tenaga listrik.",
+                skills: "Sistem Tenaga Listrik, Energi Terbarukan, Manajemen Energi",
+                salary: "Rp 9-16 juta/bulan untuk fresh graduate",
+                reason: "UPGRIS memiliki kerjasama dengan perusahaan listrik dan energi terbarukan untuk magang dan penyerapan lulusan."
             },
-            {
-                question: "Project seperti apa yang ingin Anda kerjakan?",
-                options: [
-                    { text: "Membuat drone otonom untuk monitoring lingkungan", value: "robotics" },
-                    { text: "Mendesain sistem smart grid untuk kota pintar", value: "energy" },
-                    { text: "Mengembangkan algoritma machine learning untuk diagnosis medis", value: "ai" },
-                    { text: "Membangun jaringan IoT untuk pertanian presisi", value: "telecom" }
-                ]
+            "iot-engineer": {
+                title: "Insinyur Internet of Things",
+                description: "Anda akan merancang dan mengimplementasikan solusi IoT untuk rumah pintar, kota cerdas, industri 4.0, dan aplikasi lainnya.",
+                skills: "Jaringan Sensor, Protokol IoT, Cloud Computing, Keamanan Siber",
+                salary: "Rp 8-14 juta/bulan untuk fresh graduate",
+                reason: "Kami menawarkan mata kuliah IoT dan kerjasama dengan perusahaan teknologi untuk project nyata."
             },
-            {
-                question: "Skill apa yang paling ingin Anda kuasai?",
-                options: [
-                    { text: "Embedded systems programming", value: "robotics" },
-                    { text: "Power systems analysis", value: "energy" },
-                    { text: "Deep learning dan neural networks", value: "ai" },
-                    { text: "Wireless communication protocols", value: "telecom" }
-                ]
-            }
-        ];
-
-        // Data karir berdasarkan tipe
-        const careerPaths = {
-            robotics: {
-                title: "Robotics Engineer",
-                description: "Anda memiliki potensi besar di bidang robotika! Dengan ketertarikan pada teknologi masa depan, Anda cocok untuk mengembangkan sistem robotik yang revolusioner. Prodi Teknik Elektro UPGRIS dengan konsentrasi Teknik Kendali dan Robotika akan menjadi pilihan tepat untuk Anda.",
-                recommendation: "Teknik Elektro UPGRIS - Konsentrasi Robotika dan Otomasi"
+            "ai-engineer": {
+                title: "Insinyur Kecerdasan Buatan",
+                description: "Anda akan mengembangkan sistem AI dan machine learning untuk aplikasi seperti pengenalan suara, visi komputer, atau kendaraan otonom.",
+                skills: "Python, Machine Learning, Deep Learning, Pemrosesan Sinyal",
+                salary: "Rp 10-18 juta/bulan untuk fresh graduate",
+                reason: "Teknik Elektro UPGRIS mengintegrasikan AI dan machine learning dalam kurikulum dengan fokus pada aplikasi industri."
             },
-            energy: {
-                title: "Energy Systems Specialist",
-                description: "Minat Anda pada energi terbarukan menunjukkan potensi menjadi ahli sistem energi masa depan. Anda dapat berkontribusi pada transisi energi hijau dan membangun infrastruktur energi berkelanjutan. Prodi Teknik Elektro UPGRIS dengan fokus pada Teknik Tenaga Listrik akan mendukung karir Anda.",
-                recommendation: "Teknik Elektro UPGRIS - Konsentrasi Sistem Energi"
-            },
-            ai: {
-                title: "AI Electronics Engineer",
-                description: "Kombinasi ketertarikan pada AI dan elektronik membuka peluang karir di pengembangan hardware untuk AI dan machine learning, seperti chip khusus dan sistem embedded intelligence. Prodi Teknik Elektro UPGRIS dengan konsentrasi Elektronika akan menjadi fondasi yang kuat untuk karir Anda.",
-                recommendation: "Teknik Elektro UPGRIS - Konsentrasi Elektronika dan Kecerdasan Buatan"
-            },
-            telecom: {
-                title: "Telecommunications Network Architect",
-                description: "Anda memiliki bakat dalam bidang komunikasi dan jaringan. Potensi Anda cocok untuk merancang infrastruktur telekomunikasi masa depan seperti jaringan 5G/6G dan Internet of Things. Prodi Teknik Elektro UPGRIS dengan konsentrasi Telekomunikasi akan membekali Anda dengan pengetahuan yang diperlukan.",
-                recommendation: "Teknik Elektro UPGRIS - Konsentrasi Telekomunikasi"
+            "general-engineer": {
+                title: "Insinyur Teknik Elektro",
+                description: "Anda akan memiliki peluang karir yang luas di berbagai sektor industri sebagai insinyur elektro yang versatile.",
+                skills: "Dasar-dasar Teknik Elektro, Pemecahan Masalah, Analisis Sistem",
+                salary: "Rp 7-12 juta/bulan untuk fresh graduate",
+                reason: "Kurikulum komprehensif kami mempersiapkan lulusan untuk berbagai bidang spesialisasi teknik elektro."
             }
         };
 
-        // Variabel state kuis
-        let currentQuestion = 0;
-        let userAnswers = [];
-        const quizScreen = document.getElementById('quiz-screen');
-        const introScreen = document.getElementById('intro-screen');
-        const resultScreen = document.getElementById('result-screen');
-        const questionText = document.getElementById('question-text');
-        const optionsContainer = document.getElementById('options-container');
-        const progressBar = document.getElementById('progress-bar');
-        
-        // Inisialisasi event listeners
-        document.getElementById('start-btn').addEventListener('click', startQuiz);
-        document.getElementById('restart-btn').addEventListener('click', restartQuiz);
-        
-        // Fungsi memulai kuis
-        function startQuiz() {
-            introScreen.classList.add('hidden');
-            quizScreen.classList.remove('hidden');
-            showQuestion();
+        // Inisialisasi state untuk prediksi
+        let userSelections = {
+            interests: [],
+            subjects: [],
+            projects: [],
+            skills: [],
+            workType: ""
+        };
+
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        // Fungsi untuk mengupdate progress bar
+        function updateProgressBar() {
+            const progressPercentage = (currentStep / totalSteps) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPercentage}%`;
         }
-        
-        // Fungsi menampilkan pertanyaan
-        function showQuestion() {
-            // Update progress bar
-            const progressPercentage = (currentQuestion / questions.length) * 100;
-            progressBar.style.width = `${progressPercentage}%`;
-            
-            // Tampilkan pertanyaan
-            questionText.textContent = questions[currentQuestion].question;
-            
-            // Kosongkan opsi sebelumnya
-            optionsContainer.innerHTML = '';
-            
-            // Tambahkan opsi jawaban
-            questions[currentQuestion].options.forEach(option => {
-                const button = document.createElement('button');
-                button.textContent = option.text;
-                button.classList.add('option-btn');
-                button.addEventListener('click', () => selectOption(option.value));
-                optionsContainer.appendChild(button);
+
+        // Fungsi untuk beralih antara step
+        function goToStep(stepNumber) {
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
             });
+            document.getElementById(`step-${stepNumber}`).classList.add('active');
+            currentStep = stepNumber;
+            updateProgressBar();
         }
-        
-        // Fungsi memilih opsi
-        function selectOption(value) {
-            userAnswers.push(value);
+
+        // Fungsi untuk mereset semua pilihan
+        function resetSelections() {
+            userSelections = {
+                interests: [],
+                subjects: [],
+                projects: [],
+                skills: [],
+                workType: ""
+            };
             
-            if (currentQuestion < questions.length - 1) {
-                currentQuestion++;
-                showQuestion();
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            goToStep(1);
+            
+            document.querySelector('.result-placeholder').style.display = 'block';
+            document.getElementById('career-result').style.display = 'none';
+        }
+
+        // Fungsi untuk menentukan karir berdasarkan pilihan user
+        function calculateCareer() {
+            // Algoritma sederhana untuk menentukan karir berdasarkan pilihan
+            if (userSelections.interests.includes('robot') && 
+                (userSelections.skills.includes('automation') || userSelections.skills.includes('robotics'))) {
+                return careerData['control-engineer'];
+            } else if (userSelections.interests.includes('iot') || 
+                      userSelections.projects.includes('iot-project')) {
+                return careerData['iot-engineer'];
+            } else if (userSelections.interests.includes('renewable') || 
+                      userSelections.subjects.includes('physics')) {
+                return careerData['power-engineer'];
+            } else if (userSelections.interests.includes('coding') && 
+                      userSelections.skills.includes('ai')) {
+                return careerData['ai-engineer'];
+            } else if (userSelections.interests.includes('electronics') || 
+                      userSelections.projects.includes('electronic-project')) {
+                return careerData['embedded-engineer'];
             } else {
-                showResult();
+                return careerData['general-engineer'];
             }
         }
-        
-        // Fungsi menampilkan hasil
+
+        // Fungsi untuk menampilkan hasil prediksi
         function showResult() {
-            // Hitung hasil berdasarkan jawaban
-            const result = calculateResult();
+            const career = calculateCareer();
+            const resultElement = document.getElementById('career-result');
             
-            // Tampilkan hasil
-            document.getElementById('career-title').textContent = careerPaths[result].title;
-            document.getElementById('career-description').textContent = careerPaths[result].description;
-            document.querySelector('#result-screen .result-card p strong').nextSibling.textContent = careerPaths[result].recommendation;
+            resultElement.innerHTML = `
+                <h3>${career.title}</h3>
+                <div class="career-detail">
+                    <p>${career.description}</p>
+                </div>
+                <div class="career-detail">
+                    <h4>Keterampilan yang Dibutuhkan:</h4>
+                    <p>${career.skills}</p>
+                </div>
+                <div class="career-detail">
+                    <h4>Kisaran Gaji:</h4>
+                    <p>${career.salary}</p>
+                </div>
+                <div class="upgris-recommendation">
+                    <h4>Mengapa Pilih Teknik Elektro UPGRIS?</h4>
+                    <p>${career.reason}</p>
+                    <a href="https://pmb.upgris.ac.id" class="cta-button" style="margin-top: 15px;">Daftar Sekarang</a>
+                </div>
+            `;
             
-            // Tampilkan layar hasil
-            quizScreen.classList.add('hidden');
-            resultScreen.classList.remove('hidden');
+            document.querySelector('.result-placeholder').style.display = 'none';
+            resultElement.style.display = 'block';
         }
-        
-        // Fungsi menghitung hasil
-        function calculateResult() {
-            // Hitung frekuensi setiap jawaban
-            const counts = {};
-            userAnswers.forEach(answer => {
-                counts[answer] = (counts[answer] || 0) + 1;
+
+        // Event listeners untuk navigasi
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inisialisasi progress bar
+            updateProgressBar();
+            
+            // Event listener untuk option selection
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    this.classList.toggle('selected');
+                    const step = this.closest('.step').id;
+                    const value = this.getAttribute('data-value');
+                    
+                    if (step === 'step-1') {
+                        if (this.classList.contains('selected')) {
+                            userSelections.interests.push(value);
+                        } else {
+                            userSelections.interests = userSelections.interests.filter(item => item !== value);
+                        }
+                    } else if (step === 'step-2') {
+                        if (this.classList.contains('selected')) {
+                            userSelections.subjects.push(value);
+                        } else {
+                            userSelections.subjects = userSelections.subjects.filter(item => item !== value);
+                        }
+                    } else if (step === 'step-3') {
+                        if (this.classList.contains('selected')) {
+                            userSelections.projects.push(value);
+                        } else {
+                            userSelections.projects = userSelections.projects.filter(item => item !== value);
+                        }
+                    } else if (step === 'step-4') {
+                        if (this.classList.contains('selected')) {
+                            userSelections.skills.push(value);
+                        } else {
+                            userSelections.skills = userSelections.skills.filter(item => item !== value);
+                        }
+                    } else if (step === 'step-5') {
+                        document.querySelectorAll('#step-5 .option').forEach(opt => {
+                            opt.classList.remove('selected');
+                        });
+                        this.classList.add('selected');
+                        userSelections.workType = value;
+                    }
+                });
             });
             
-            // Temukan jawaban dengan frekuensi tertinggi
-            let maxCount = 0;
-            let result = '';
+            // Event listener untuk tombol reset
+            document.getElementById('reset-button').addEventListener('click', resetSelections);
             
-            for (const [key, value] of Object.entries(counts)) {
-                if (value > maxCount) {
-                    maxCount = value;
-                    result = key;
-                }
-            }
+            // Event listener untuk navigasi next dan back
+            document.getElementById('next-1').addEventListener('click', () => goToStep(2));
+            document.getElementById('next-2').addEventListener('click', () => goToStep(3));
+            document.getElementById('next-3').addEventListener('click', () => goToStep(4));
+            document.getElementById('next-4').addEventListener('click', () => goToStep(5));
             
-            return result;
-        }
-        
-        // Fungsi restart kuis
-        function restartQuiz() {
-            currentQuestion = 0;
-            userAnswers = [];
-            resultScreen.classList.add('hidden');
-            introScreen.classList.remove('hidden');
-        }
-        
-        // Fungsi berbagi hasil
-        function shareResult(platform) {
-            const careerTitle = document.getElementById('career-title').textContent;
-            const text = `Saya baru saja mencoba AI Career Path Predictor dari Prodi Teknik Elektro UPGRIS dan hasilnya saya cocok sebagai ${careerTitle}! Coba tesnya di sini:`;
-            const url = window.location.href;
+            document.getElementById('back-2').addEventListener('click', () => goToStep(1));
+            document.getElementById('back-3').addEventListener('click', () => goToStep(2));
+            document.getElementById('back-4').addEventListener('click', () => goToStep(3));
+            document.getElementById('back-5').addEventListener('click', () => goToStep(4));
             
-            let shareUrl;
-            
-            switch(platform) {
-                case 'facebook':
-                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`;
-                    break;
-                case 'twitter':
-                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-                    break;
-                case 'whatsapp':
-                    shareUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
-                    break;
-                default:
-                    return;
-            }
-            
-            window.open(shareUrl, '_blank');
-        }
+            // Event listener untuk tombol hasil
+            document.getElementById('calculate-result').addEventListener('click', showResult);
+        });
     </script>
 </body>
 </html>
